@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using System.Dynamic;
 
 using DAL.DataService;
 using DAL;
@@ -44,14 +45,14 @@ namespace ProductsCatalogService.ApplicationService
         /// </summary>        
         /// <returns>product info for passed id</returns>
         public async Task<ProductInfo> GetProductById(int? productId)
-        {
-            //return await Task.FromResult<ProductInfo>(null); ;// 
+        {           
             var p =await _productDataService.GetProductById(productId);
+
             return new ProductInfo
-            {
-                Name = p.ProductName,
-                Category = p.Category.CategoryName,
-                Price = p.UnitPrice,
+            {                 
+                Name = p.Name,
+                Category = p.Category,
+                Price = p.Price,
                 ProductID = p.ProductID
             };
         }
@@ -85,12 +86,13 @@ namespace ProductsCatalogService.ApplicationService
 
         public async Task<int> UpdateProduct(ProductInfo product)
         {
-            return await Task.FromResult<int>(0);// _productDataService.UpdateProduct(product);
+           Product p = new Product { ProductID = product.ProductID,  UnitPrice = product.Price };
+           return await _productDataService.UpdateProduct(p);
         }
 
         public async Task<int> RemoveProduct(int? id)
         {
-            return await Task.FromResult<int>(0);// 0; _productDataService.RemoveProduct(id);
+            return await _productDataService.RemoveProduct(id);
         }
     }
 }

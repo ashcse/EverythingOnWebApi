@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Linq.Expressions;
 
 namespace DAL.DataService
 {
@@ -52,11 +53,20 @@ namespace DAL.DataService
         /// Retruns product for specified id
         /// </summary>        
         /// <returns>product info for passed id</returns>
-        public async Task<Product> GetProductById(int? productId)
+        public async Task<Models.ProductInfoDB> GetProductById(int? productId)
         {
             using (var dbContext = new NORTHWNDEntities())
             {
-               return await dbContext.Products.FindAsync(productId);                
+            var p = await dbContext.Products.FindAsync(productId);                
+
+                return new Models.ProductInfoDB
+                {
+                    ProductID = p.ProductID,
+                    Name = p.ProductName,
+                    Price = p.UnitPrice,
+                    Category = p.Category.CategoryName,
+                };           
+                                          
             }
         }
 
@@ -92,7 +102,7 @@ namespace DAL.DataService
         }
 
         /// <summary>
-        /// Updates existing product
+        /// Updates existing product (only unit price and product name is modified)
         /// </summary>
         /// <param name="product">Product to be updated</param>
         /// <returns>Number of records updated</returns>  
@@ -101,8 +111,7 @@ namespace DAL.DataService
             using (var dbContext = new NORTHWNDEntities())
             {
                 Product productEntity = await dbContext.Products.FindAsync(product.ProductID);
-                productEntity.ProductName = product.ProductName;              
-                productEntity.CategoryID = product.CategoryID;
+                
                 productEntity.UnitPrice = product.UnitPrice;
                 dbContext.Entry(productEntity).State = EntityState.Modified;
                 return await dbContext.SaveChangesAsync();

@@ -16,7 +16,7 @@ namespace DAL.DataService
         /// Retruns product for specified id
         /// </summary>        
         /// <returns>product info for passed id</returns>
-        Task<Product> GetProductById(int? productId);
+        Task<Models.ProductInfoDB> GetProductById(int? productId);
 
         /// <summary>
         /// Retruns list of prducts for specified category

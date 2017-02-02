@@ -86,7 +86,7 @@ namespace ProductsCatalogService.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProductID,ProductName,ProductDescription,ProductCategory,ProductPrice")] ProductInfo product)
+        public async Task<ActionResult> Edit( ProductInfo product)
         {
             if (ModelState.IsValid)
             {

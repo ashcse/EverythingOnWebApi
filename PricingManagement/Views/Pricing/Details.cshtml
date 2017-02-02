@@ -1,0 +1,40 @@
+﻿@model PricingManagement.Models.ProductInfo
+
+@{
+    ViewBag.Title = "Price Details";
+}
+
+<h2>Price Details</h2>
+
+<div>
+    <h4>ProductInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductPrice)
+        </dd>
+
+    </dl>
+</div>
+<p>    
+    @Html.ActionLink("Back to List", "Index")
+</p>

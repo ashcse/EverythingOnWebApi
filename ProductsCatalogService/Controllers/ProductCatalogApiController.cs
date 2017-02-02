@@ -137,6 +137,7 @@ namespace ProductsCatalogService.Controllers
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
+
             var modelState = actionContext.ModelState;
 
             if (actionContext.ActionArguments.Values.Contains(null) || !modelState.IsValid)

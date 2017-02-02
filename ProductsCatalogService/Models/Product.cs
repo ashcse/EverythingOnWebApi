@@ -15,17 +15,17 @@ namespace ProductsCatalogService.Models
 
         [Required]
         [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 4)]
-        public string ProductName { get; set; }
+        public string Name { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 10)]
-        public string ProductDescription { get; set; }
+        public string Description { get; set; }
 
         [Required]
         [StringLength(20, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
-        public string ProductCategory { get; set; }
+        public string Category { get; set; }
 
         [Required]
-        public double ProductPrice { get; set; }
+        public decimal? Price { get; set; }
     }
 }

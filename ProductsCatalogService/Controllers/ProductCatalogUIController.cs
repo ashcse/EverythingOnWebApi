@@ -31,7 +31,7 @@ namespace ProductsCatalogService.Controllers
         public async Task<ActionResult> Index()
         {
             var products = await _productApiController.GetAllProducts();
-            return View(((OkNegotiatedContentResult<List<ProductInfo>>)(products)).Content.AsEnumerable<ProductInfo>());
+            return View(((OkNegotiatedContentResult<IEnumerable<ProductInfo>>)(products)).Content.AsEnumerable<ProductInfo>());
         }
 
         // GET: ProductCatalogUI/Details/5
@@ -98,7 +98,7 @@ namespace ProductsCatalogService.Controllers
         }
 
         // GET: ProductCatalogUI/Delete/5
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {

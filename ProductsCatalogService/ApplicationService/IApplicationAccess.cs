@@ -17,7 +17,7 @@ namespace ProductsCatalogService.ApplicationService
         /// </summary>
         /// <param name="productCatagory">Product Category (search criteria)</param>
         /// <returns>List of products</returns>
-        Task<IEnumerable<ProductInfo>> GetProducts(string productCatagory);
+        Task<IEnumerable<ProductInfo>> GetProducts(int productCatagory);
 
         /// <summary>
         /// Retruns list of all prducts

@@ -39,7 +39,7 @@ namespace ProductsCatalogService.Controllers
         [AllowAnonymous]
         public async Task<IHttpActionResult> GetAllProducts()
         {
-            dynamic list = await _applicationAccess.GetAllProducts();
+            var list = await _applicationAccess.GetAllProducts();
             return Ok(list);
         }
 

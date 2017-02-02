@@ -9,6 +9,6 @@ namespace ProductsCatalogService.Models
     public class GetProductsListParam
     {
         [Required(ErrorMessage = "Product Type is required")]
-        public string ProductType { get; set; }
+        public int ProductType { get; set; }
     }
 }

@@ -29,7 +29,6 @@ namespace ProductsCatalogService
             containerBuilder.RegisterType<ApplicationAccess>().As<IApplicationAccess>().SingleInstance();
             IContainer container = containerBuilder.Build();
 
-
             //This is how both MVC and Web Api dependency resolvers are used together.
             // Here MVC dependency resolver is instantiated and set 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));    

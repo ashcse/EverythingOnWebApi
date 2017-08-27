@@ -20,7 +20,7 @@ namespace DAL.DataService
             {
                 try
                 {
-                    var result = dbContext.Products.Take(5);
+                    var result = dbContext.Products;
                                 /*  select new Product
                                   {
                                       UnitPrice = p.UnitPrice.HasValue ? p.UnitPrice.Value : 0,
